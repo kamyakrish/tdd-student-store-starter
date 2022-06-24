@@ -1,0 +1,28 @@
+.navbar{
+    margin: 0;
+    padding:0;
+    background-color: #2b4344;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+.content{
+    margin-top: auto;
+    align-items: center;
+    float: right;
+    vertical-align: center;
+}
+h3, .logo{
+    justify-content: center;
+    display: inline-block;
+}
+h3
+{
+    margin-right: 50px;
+}
+#logo-img{
+    width: 70px;
+    margin-left: 50px;
+}

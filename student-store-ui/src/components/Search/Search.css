@@ -1,0 +1,88 @@
+.search {
+    width: 100%;
+    text-align:center;
+    padding:10px;
+    margin:10px 0;
+    background-color: var(--darkBlue);
+    justify-content: space-between;
+    color: var(--white);
+    margin-bottom: auto;
+}
+.product-categories{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top:auto;
+
+}
+.search-input input{
+    transform: translate(2%, 0%);
+    padding-right: 2rem;
+    height: 40px;
+    padding: 0 15px;
+    border-radius: 8px 0 0 8px;
+    border: solid 1px #b1b1b1;
+    flex: 1;
+    font-size: 16px;
+    min-width: 65%;
+    display: flex;
+    margin-bottom: 1cm;
+}
+#all{
+    background-color: #00c385;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    width: 120px;
+    font-size: medium;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    margin-top:auto;
+    color: white;
+}
+#tech{
+    background-color: #00c385;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    width: 120px;
+    font-size: medium;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    margin-top:auto;
+    color: white;
+}
+
+#food{
+    background-color: #00c385;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    width: 120px;
+    font-size: medium;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    margin-top:auto;
+    color: white;
+}
+#accessories{
+    background-color: #00c385;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    width: 120px;
+    font-size: medium;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    margin-top:auto;
+    color: white;
+}
+#clothing{
+    background-color: #00c385;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    width: 120px;
+    font-size: medium;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    margin-top:auto;
+    color: white;
+}

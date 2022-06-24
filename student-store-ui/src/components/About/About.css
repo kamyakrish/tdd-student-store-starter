@@ -1,0 +1,31 @@
+.about
+{
+    display:grid;
+    grid-template-columns: repeat(2, auto);
+    background-color: #FFFFFF;
+    margin-bottom: 50px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.a-text
+{
+    padding: 50px
+}
+
+#a-image
+{
+    width: 400px;
+    height: 300px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.heading{
+    margin: 10px 0 30px;
+    font-weight: 600;
+    transform: translate(3%, 0%);
+}
