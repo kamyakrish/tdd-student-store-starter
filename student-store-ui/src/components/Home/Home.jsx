@@ -8,7 +8,7 @@ export default function Home(props) {
   const [searchBar, setSearchBar]= React.useState('');
 
   return (
-    <div className="home">
+    <div className="home" id="home">
       <Hero/>
       <Search searchBar={searchBar} setSearchBar={setSearchBar} setCategory={setCategory}/>
       <h2>Products:</h2>

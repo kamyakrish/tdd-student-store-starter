@@ -1,29 +1,30 @@
 import * as React from "react"
-import { Link } from "react-router-dom"
 import "./CheckoutForm.css"
 
 export default function CheckoutForm(props) {
-    var err = <p className="checkout-error"></p>;
+    var error = <p className="checkout-error"></p>;
     if (props.checkingOutError === "item") {
-        err = <p className="checkout-error">No cart or items in cart found to checkout.</p>
+        error = <p className="checkout-error">No items in cart found to checkout.</p>
     }
     if (props.checkingOutError === "field") {
-        err = <p className="checkout-error">User info must include an email and name.</p>
+        error = <p className="checkout-error">User info must include an email and name.</p>
     }
 
     return (
         <div className="checkout-form">
-            <h3>Payment Info <i className="dollar side-icon"></i></h3>
+            <h3>Payment Info </h3>
             <div className="input-field">
                 <label className="label">Name</label>
                 <div className="control">
-                    <input value={props.checkOutForm} onChange={(e) => props.handleOnCheckoutFormChange("name", e.target.value)} type="text" name="name" className="checkout-form-input" placeholder="Student Name" />
+                    <input value={props.checkOutForm} onChange={(e) => props.handleOnCheckoutFormChange("name", e.target.value)} 
+                    type="text" name="name" className="checkout-form-input" placeholder="Student Name" />
                 </div>
             </div>
             <div className="input-field">
             <label className="label">Email</label>
                 <div className="control">
-                    <input value={props.checkOutForm} onChange={(e) => props.handleOnCheckoutFormChange("email", e.target.value)} type="email" name="email" className="checkout-form-input" placeholder="student@codepath.org" />
+                    <input value={props.checkOutForm} onChange={(e) => props.handleOnCheckoutFormChange("email", e.target.value)}
+                    type="email" name="email" className="checkout-form-input" placeholder="studentemail@codepath.org" />
                 </div>
             </div>
             <div className="field">
@@ -36,7 +37,7 @@ export default function CheckoutForm(props) {
                     </label>
                 </div>
             </div>
-            {err}
+            {props.success ? <p className="success">Success!!</p> : error}
             <div className="field">
                 <div className="control">
                     <button className="button checkout-button" onClick={props.handleOnSubmitCheckoutForm}>Checkout</button>
@@ -45,3 +46,4 @@ export default function CheckoutForm(props) {
         </div>
     )
 }
+

@@ -1,31 +1,30 @@
+
+
 import * as React from "react"
 import "./ProductCard.css"
 import { Link } from "react-router-dom"
 
-export default function ProductCard(props) {
-  const product = props.product
-  return (
-    <div className="product-card">
-        <Link to={"products/" + product.id}>
-        <img id="product-poster" src={product.image}/>
-        </Link>
-        <div className="product-info">
-          <div className="details">
-          <p className="product-name">{product.name}</p>
-        <p className="product-price">${product.price}</p>
+export default function ProductCard({ handleDisplayItemOnClick, handleAddItemToCart, handleRemoveItemFromCart, imgSrc, name, price, id }) {
+    return (
+        <div className="product-card" key={id} onClick={handleDisplayItemOnClick}>
+            <Link to={"/products/" + id}>
+                <div className="image">
+                    <img src={imgSrc}></img>
+                </div>
+            </Link>
+            <div className="description">
+                <Link to={"/products/" + id} style={{ textDecoration: 'none' }}>
+                    <h1 className="product-name"> {name}</h1>
+                </Link>
+                <div className="price-add">
+                    <h2 className="product-price"> ${price} </h2>
+                    <span>
+                        <i className="remove material-icons md-48" onClick={handleRemoveItemFromCart}> remove </i>
+                        <i className="add material-icons md-48" onClick={handleAddItemToCart}> add </i>
+                    </span>
+                </div>
+            </div>
+
         </div>
-        {props.showDescription &&
-            <p className="product-description">{product.description}</p>
-        } 
-          <div className="actions">
-          <div className="shop-btns">
-          <button type="button" className="add" onClick={() => props.handleAddItemToCart(product.id)}><i className="material-icons">+</i></button>
-          <button type="button" className="remove" disabled={props.quantity === 0 ? true : false} onClick={() => props.handleRemoveItemFromCart(product.id)}><i className="material-icons remove-btn">-</i></button>
-          </div>
-          <span className="quantity">
-            {props.quantity === 0 ? <span className="amt hide">{props.quantity}</span> : <span className="amt">{props.quantity}</span>}
-          </span>
-    </div>
-    </div>
-    </div>
-  )}
+    )
+}

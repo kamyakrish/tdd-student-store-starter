@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     flex: 1;
-    background-color: #2b4344;
+    background: #5b479f;
     overflow-x: hidden;
     padding-top: 20px;
     overflow-y:scroll;
@@ -18,7 +18,7 @@
 .toggle-button
 {
     display: block;
-    background-color: #2b4344;
+    background-color: #5b479f;
     border: none;
     cursor:pointer;
 }
@@ -26,14 +26,14 @@
 {
     width: 40px;
     display: block;
-    background-color: #2b4344;
+    background-color: #5b479f;
     border: none;
 }
 .closed{
     width: 55px;
     opacity: .86;
     border: none;
-    background-color: #2b4344;
+    background-color: #5b479f;
 }
 
 button:hover{
@@ -44,5 +44,5 @@ button:hover{
 .checkout-Btn{
     border: none;
     display: block;
-    background-color: #2b4344;
+    background-color: #5b479f;
 }

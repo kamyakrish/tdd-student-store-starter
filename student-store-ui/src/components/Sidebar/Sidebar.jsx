@@ -10,8 +10,8 @@ export default function Sidebar(props) {
       <button className="toggle-button" onClick={props.handleOnToggle}><img src="../src/shopping_cart.png" alt="Shopping Cart" id="toggle-image"/></button>
       <button className={props.isOpen ? "closed" : "checkout-Btn"}><img src="../src/dollar_sign.png" alt="Dollar Sign" id="toggle-image"/></button>
       <button className={props.isOpen ? "closed" : "checkout-Btn"}><img src="../src/checklist.png" alt="checklist" id="toggle-image"/></button>
-      <ShoppingCart isOpen={props.isOpen} setIsOpen={props.setIsOpen} products={props.products} shoppingCart={props.shoppingCart} checkOutForm={props.checkOutForm} handleOnCheckoutFormChange={props.handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={props.handleOnSubmitCheckoutForm} order={props.order} makeReceipt={props.makeReceipt} setMakeReceipt={props.setMakeReceipt} checkingOutError={props.checkingOutError}/>
+      <ShoppingCart isOpen={props.isOpen} setIsOpen={props.setIsOpen} products={props.products} shoppingCart={props.shoppingCart} checkOutForm={props.checkOutForm} handleOnCheckoutFormChange={props.handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={props.handleOnSubmitCheckoutForm} order={props.order} makeReceipt={props.makeReceipt} setMakeReceipt={props.setMakeReceipt} checkingOutError={props.checkingOutError} error={props.error} success={props.success} setSuccess={props.setSuccess}/>
+    
     </section>
   )
-
 }

@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import ProductCard from "./ProductCard";
 
@@ -20,14 +21,14 @@ if(props.searchBar !== ''){
 console.log("Entered product grid: ", props.products)
   return (
 
-    <div className = "product-grid">
+    <div className = "product-grid" id="buy">
       {props.isFetching ?
 				<h1>Loading...</h1>
 				:
          displayProducts.map((product, index) => {
-            return <ProductCard key = {product.id} 
+            return <ProductCard key = {product.id}
                                 class = "product-box"
-                                showDescription={false} 
+                                showDescription={false}
                                 product={product}
                                 productId = {product.id}
                                 handleAddItemToCart={props.handleAddItemToCart}

@@ -1,5 +1,3 @@
-
-
 import * as React from "react"
 import "./Navbar.css"
 import Logo from "../Logo/Logo"
@@ -7,13 +5,16 @@ import Logo from "../Logo/Logo"
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <Logo />
       <div className="content">
-      <h3> Home </h3>
-      <h3> About Us </h3>
-      <h3> Contact Us </h3>
-      <h3> Buy Now </h3>
+        <Logo />
+        <ul className="links">
+          <button><a href="#home">Home</a></button>
+          <button><a href="#about">About Us</a></button> 
+          <button><a href="#contact">Contact Us</a></button> 
+          <button><a href="#buy">Buy Now</a></button> 
+      </ul>
       </div>
     </nav>
   )
 }
+

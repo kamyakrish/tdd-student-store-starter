@@ -15,23 +15,23 @@ export default function App() {
   const [isFetching, setIsFetching] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [checkingOutError, setCheckingOutError]=React.useState("")
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [shoppingCart, setShoppingCart] = React.useState({});
+  const[checkOutForm, setCheckOutForm] = React.useState({name:"", email: ""})
+  const [isOpen, setIsOpen] = React.useState(false); 
+  const [shoppingCart, setShoppingCart] = React.useState({}); 
   const[makeReceipt, setMakeReceipt] = React.useState(false)
   const[order, setOrder]=React.useState({})
-  const[checkOutForm, setCheckOutForm] = React.useState({
-  name:"",
-  email: ""
-});
+  const[success, setSuccess] = React.useState(false);
+
 
   React.useEffect(()=>{
     async function fetchItems(){
       setIsFetching(true);
       try{
-       const response = await axios.get("https://codepath-store-api.herokuapp.com/store");
+       const response = await axios.get("http://localhost:3001/store");
           console.log("App.jsx tries", response?.data?.products);
-          if(response?.data?.products){
-            setProducts(response?.data?.products);
+          const posts = response?.data?.products
+          if(posts){
+            setProducts(posts);
           }
         }catch(err){
         console.log(err.response);
@@ -49,16 +49,18 @@ export default function App() {
 
 
   function handleOnToggle(){
-
+ 
     setIsOpen(prev => !prev)
   }
 
   function handleAddItemToCart(productId){
     if(shoppingCart.hasOwnProperty(productId)){
-      setShoppingCart((prevCart)=> ({...prevCart, [productId]:prevCart[productId] +1}))
+      setShoppingCart((prevCart)=>
+      ({...prevCart, [productId]:prevCart[productId] +1}))
     }
     else{
-      setShoppingCart((prevCart) => ({...prevCart, [productId]:1}))
+      setShoppingCart((prevCart) =>
+      ({...prevCart, [productId]:1}))
   } setCheckingOutError("")
 
   }
@@ -76,23 +78,22 @@ export default function App() {
     newForm[name] = value
     setCheckOutForm(newForm)
     setCheckingOutError("")
-
+  
   }
   function handleOnSubmitCheckoutForm(){
-
+    let shopArray = []
     if(Object.keys(shoppingCart).length === 0){
       setCheckingOutError("item")
       return;
     } if(checkOutForm.name === "" || checkOutForm.email === ""){
       setCheckingOutError("field")
       return;
-    } let shopArray = []
+    }
     for(const item in shoppingCart){
       shopArray.push({itemId: item, quantity:shoppingCart[item]})
-    } axios.post("https://codepath-store-api.herokuapp.com/store",
+    } axios.post("http://localhost:3001/store",
     {
-      user:
-      {
+      user:{
       name: checkOutForm.name,
       email: checkOutForm.email
     },
@@ -100,24 +101,27 @@ export default function App() {
   }).then(res =>{
     setShoppingCart({})
     setCheckOutForm({name:"", email:""})
+    setSuccess(true)
     setMakeReceipt(true)
     setOrder(res.data.purchase)
   })
-
+  
   }
   return (
     <div className="app">
       <BrowserRouter>
         <main>
         <Navbar/>
-        <Sidebar isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkOutForm={checkOutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} setIsOpen={setIsOpen} order={order} makeReceipt={makeReceipt} setMakeReceipt={setMakeReceipt} checkingOutError={checkingOutError}/>
+        <Sidebar success={success} isOpen={isOpen} shoppingCart={shoppingCart} products={products}
+        checkOutForm={checkOutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+        handleOnToggle={handleOnToggle} setIsOpen={setIsOpen} order={order} makeReceipt={makeReceipt} setMakeReceipt={setMakeReceipt}
+        checkingOutError={checkingOutError}/>
           <Routes>
             <Route path="/" element={<Home isFetching={isFetching} handleAddItemToCart={handleAddItemToCart} products={products} handleRemoveItemFromCart={handleRemoveItemFromCart} setIsOpen={setIsOpen} shoppingCart={shoppingCart}/>} />
             <Route path="/products/:productId" element={<ProductDetail isFetching={isFetching} setIsFetching={setIsFetching}
                handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} setError={setError} shoppingCart={shoppingCart}/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
-          {}
           <About/>
           <Contact/>
           <Footer/>

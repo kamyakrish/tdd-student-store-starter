@@ -1,5 +1,3 @@
-
-
 import * as React from "react"
 import { useParams } from "react-router-dom";
 import NotFound from "../NotFound";
@@ -21,9 +19,9 @@ export default function ProductDetail({ handleAddItemToCart, handleRemoveItemFro
       return <NotFound />
     }), [])
 
-  
+
   return(
-    
+
     <div className="product-detail">
       {isFetching && <h1 className="loading">Loading...</h1>}
         {!error && <ProductView product={product} productId={productId}
