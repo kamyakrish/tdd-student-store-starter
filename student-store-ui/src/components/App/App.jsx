@@ -16,12 +16,13 @@ export default function App() {
   const [error, setError] = React.useState(false);
   const [checkingOutError, setCheckingOutError]=React.useState("")
   const[checkOutForm, setCheckOutForm] = React.useState({name:"", email: ""})
-  const [isOpen, setIsOpen] = React.useState(false); 
-  const [shoppingCart, setShoppingCart] = React.useState({}); 
+  const [isOpen, setIsOpen] = React.useState(false); //tells us if sidebar is in the open or closed state
+  const [shoppingCart, setShoppingCart] = React.useState({}); //Each object in the array should have two fields: itemId which stores the id of the item being purchased
+  //The `quantity` field should store a number representing how many of that item the user is purchasing.
   const[makeReceipt, setMakeReceipt] = React.useState(false)
   const[order, setOrder]=React.useState({})
   const[success, setSuccess] = React.useState(false);
-
+  //`checkoutForm` - the user's information that will be sent to the API when they checkout
 
   React.useEffect(()=>{
     async function fetchItems(){
@@ -49,7 +50,7 @@ export default function App() {
 
 
   function handleOnToggle(){
- 
+    //should toggle the open/closed state of the `Sidebar`
     setIsOpen(prev => !prev)
   }
 
@@ -62,7 +63,10 @@ export default function App() {
       setShoppingCart((prevCart) =>
       ({...prevCart, [productId]:1}))
   } setCheckingOutError("")
-
+//It should accept a single argument - `productId`
+//Should add that product to the `shoppingCart` if it doesn't exist, and set its quantity to `1`
+//If it does exist, it should increase the quantity by `1`
+//It should add the price of the product to the total price of the `shoppingCart`.
   }
   function handleRemoveItemFromCart(productId){
    const nCart = {...shoppingCart, [productId]:shoppingCart[productId]-1}
@@ -71,14 +75,20 @@ export default function App() {
     }
     setShoppingCart(nCart)
     console.log(shoppingCart)
-
+   // should accept a single argument - `productId`
+   //should decrease the quantity of the item in the `shoppingCart` by `1`, but only if it already exists.
+   //If it doesn't exist, the function should do nothing.
+   //If the new quantity is `0`, it should remove the item from the `shoppingCart`
   }
   function handleOnCheckoutFormChange(name, value){
     let newForm = {...checkOutForm}
     newForm[name] = value
     setCheckOutForm(newForm)
     setCheckingOutError("")
-  
+  //It should receive two arguments:
+  //`name` - the `name` attribute of the input being
+  //`value` - the new value to set for that input
+  //should update the `checkoutForm` object with the new value from the correct input(s)
   }
   function handleOnSubmitCheckoutForm(){
     let shopArray = []
@@ -105,7 +115,8 @@ export default function App() {
     setMakeReceipt(true)
     setOrder(res.data.purchase)
   })
-  
+  //It should submit the user's order to the API
+  //To submit the user's order, it should leverage the `axios.post` method to send a `POST` request to the `/store` endpoint.
   }
   return (
     <div className="app">
